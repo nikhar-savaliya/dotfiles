@@ -1,9 +1,8 @@
 return {
-  { "webhooked/kanso.nvim" },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "kanso-ink",
-    },
-  },
+  "catppuccin/nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme("catppuccin")
+  end,
 }
