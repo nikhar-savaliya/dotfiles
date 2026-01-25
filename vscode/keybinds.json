@@ -200,7 +200,7 @@
 
   /*
     ---------------------------------------
-    QUICK OPEN NAVIGATION
+    QUICK OPEN NAVIGATION (CMD+P)
     ---------------------------------------
     */
   {
@@ -216,9 +216,27 @@
 
   /*
     ---------------------------------------
-    SUGGESTION WIDGET NAVIGATION
+    CODE ACTION LIST NAVIGATION (CMD+.)
     ---------------------------------------
     */
+
+  {
+    "key": "ctrl+j",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+
+  /*
+    ---------------------------------------
+    EDITOR SUGGESTION WIDGET NAVIGATION
+    ---------------------------------------
+    */
+
   {
     "key": "ctrl+j",
     "command": "selectNextSuggestion",
