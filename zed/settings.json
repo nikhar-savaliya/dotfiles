@@ -1,0 +1,81 @@
+{
+  "format_on_save": "on",
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-6",
+      "enable_thinking": true,
+      "effort": "medium",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "tree_view": false,
+  },
+  "edit_predictions": {
+    "mode": "eager",
+  },
+  "icon_theme": "Light Charmed Icons",
+  "which_key": {
+    "enabled": true,
+  },
+  // "experimental.theme_overrides": {
+  //   "editor.document_highlight.read_background": "#00000000",
+  //   "editor.document_highlight.write_background": "#00000000",
+  // },
+  "title_bar": {
+    "show_menus": false,
+    "show_branch_icon": false,
+  },
+  "show_whitespaces": "none",
+  "git": {
+    "inline_blame": {
+      "delay_ms": 3000,
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "vim_mode": true,
+  "project_panel": {
+    "starts_open": false,
+    "auto_fold_dirs": false,
+    "hide_root": true,
+  },
+  "relative_line_numbers": "enabled",
+  "vertical_scroll_margin": 10.0,
+  "confirm_quit": true,
+  "soft_wrap": "editor_width",
+  "tab_size": 2,
+  "theme": {
+    "mode": "dark",
+    "light": "Arrakis Day",
+    "dark": "Tomorrow Night",
+  },
+  "scrollbar": {
+    "git_diff": false,
+  },
+  "theme_overrides": {
+    "Catppuccin Mocha - No Italics": {
+      "border.variant": "#313244",
+      "tab.inactive_background": "#181825",
+      "tab_bar.background": "#181825",
+    },
+    "poimandres (No Italic)": {},
+  },
+  "gutter": {
+    // "min_line_number_digits": 0,
+  },
+  "ui_font_family": "Dank Mono",
+  "buffer_font_family": "Dank Mono",
+  // "buffer_font_family": "TX-02",
+  "seed_search_query_from_cursor": "selection",
+  "cursor_blink": false,
+  "selection_highlight": false,
+  "extend_comment_on_newline": false,
+  "restore_on_file_reopen": false,
+  "close_on_file_delete": true,
+  "restore_on_startup": "last_session",
+}
