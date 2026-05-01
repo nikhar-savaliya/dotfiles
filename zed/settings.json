@@ -1,81 +1,172 @@
 {
-  "format_on_save": "on",
-  "agent": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-6",
-      "enable_thinking": true,
-      "effort": "medium",
+  // ==================== FONTS ====================
+  "cli_default_open_behavior": "existing_window",
+  "ui_font_family": "Basier Circle",
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "buffer_font_family": "GeistMono Nerd Font",
+  "show_edit_predictions": true,
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
     },
-    "favorite_models": [],
-    "model_parameters": [],
   },
-  "git_panel": {
-    "tree_view": false,
+  "base_keymap": "VSCode",
+  "outline_panel": {
+    "dock": "left",
+    "git_status": true,
   },
-  "edit_predictions": {
-    "mode": "eager",
+  "terminal": {
+    "font_size": 11.0,
+    "line_height": "comfortable",
   },
-  "icon_theme": "Light Charmed Icons",
-  "which_key": {
-    "enabled": true,
+  "zoomed_padding": true,
+  "status_bar": {
+    "active_language_button": true,
   },
-  // "experimental.theme_overrides": {
-  //   "editor.document_highlight.read_background": "#00000000",
-  //   "editor.document_highlight.write_background": "#00000000",
-  // },
-  "title_bar": {
-    "show_menus": false,
-    "show_branch_icon": false,
+  "prettier": {
+    "allowed": true,
   },
+  "toolbar": {
+    "code_actions": true,
+  },
+  "expand_excerpt_lines": 20,
+  "double_click_in_multibuffer": "select",
+  "diff_view_style": "split",
+  "show_wrap_guides": true,
+  "unstable.ui_density": "compact",
+  "restore_on_startup": "launchpad",
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "buffer_font_size": 12,
+  "ui_font_size": 15,
+  "theme": {
+    "mode": "light",
+    "light": "Flexoki Light",
+    "dark": "One Dark",
+  },
+  // ==================== THEME ====================
+  "icon_theme": {
+    "mode": "light",
+    "light": "Light Charmed Icons",
+    "dark": "Light Charmed Icons",
+  },
+  "theme_overrides": {
+    "Catppuccin Mocha - No Italics": {
+      "border": "#313244CF",
+      "border.variant": "#313244CF",
+      "status_bar.background": "#181825",
+      "title_bar.background": "#181825",
+      "tab_bar.background": "#181825",
+      "tab.inactive_background": "#181825",
+      "syntax": {
+        "type": {
+          "color": "#cba6f7",
+        },
+      },
+    },
+    "Tomorrow Night": {
+      "terminal.foreground": "#C5C8C6",
+    },
+    "GitHub Dark Dimmed": {
+      "border.variant": "#30363D",
+      "border": "#30363D",
+      "players": [{ "cursor": "#fff" }],
+    },
+  },
+  "experimental.theme_overrides": {
+    "editor.document_highlight.read_background": "#00000000",
+    "editor.document_highlight.write_background": "#00000000",
+  },
+  // ==================== EDITOR ====================
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  "tab_size": 2,
+  "soft_wrap": "editor_width",
   "show_whitespaces": "none",
-  "git": {
-    "inline_blame": {
-      "delay_ms": 3000,
-    },
+  "relative_line_numbers": "enabled",
+  "vertical_scroll_margin": 10.0,
+  "cursor_blink": false,
+  "selection_highlight": false,
+  "extend_comment_on_newline": false,
+  "format_on_save": "on",
+  // ==================== FILE / SESSION ====================
+  // "restore_on_startup": "last_session",
+  "restore_on_file_reopen": false,
+  "close_on_file_delete": true,
+  "confirm_quit": false,
+  // ==================== NAVIGATION / UI ====================
+  "title_bar": {
+    "show_sign_in": true,
+    "show_menus": false,
   },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false,
-  },
-  "vim_mode": true,
   "project_panel": {
+    "git_status": false,
+    "git_status_indicator": false,
+    "dock": "left",
+    "bold_folder_labels": false,
+    "entry_spacing": "comfortable",
+    "button": true,
     "starts_open": false,
     "auto_fold_dirs": false,
     "hide_root": true,
   },
-  "relative_line_numbers": "enabled",
-  "vertical_scroll_margin": 10.0,
-  "confirm_quit": true,
-  "soft_wrap": "editor_width",
-  "tab_size": 2,
-  "theme": {
-    "mode": "dark",
-    "light": "Arrakis Day",
-    "dark": "Tomorrow Night",
-  },
   "scrollbar": {
     "git_diff": false,
   },
-  "theme_overrides": {
-    "Catppuccin Mocha - No Italics": {
-      "border.variant": "#313244",
-      "tab.inactive_background": "#181825",
-      "tab_bar.background": "#181825",
+  "gutter": {},
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 0,
+  },
+  // ==================== GIT ====================
+  "git_panel": {
+    "dock": "left",
+    "button": true,
+    "sort_by_path": false,
+    "diff_stats": true,
+    "folder_icons": true,
+    "collapse_untracked_diff": false,
+    "file_icons": true,
+    "status_style": "label_color",
+    "tree_view": true,
+    "show_count_badge": true,
+  },
+  "git": {
+    "hunk_style": "unstaged_hollow",
+    "disable_git": false,
+    "inline_blame": {
+      "delay_ms": 1000,
     },
-    "poimandres (No Italic)": {},
   },
-  "gutter": {
-    // "min_line_number_digits": 0,
-  },
-  "ui_font_family": "Dank Mono",
-  "buffer_font_family": "Dank Mono",
-  // "buffer_font_family": "TX-02",
+  // ==================== SEARCH ====================
   "seed_search_query_from_cursor": "selection",
-  "cursor_blink": false,
-  "selection_highlight": false,
-  "extend_comment_on_newline": false,
-  "restore_on_file_reopen": false,
-  "close_on_file_delete": true,
-  "restore_on_startup": "last_session",
+  // ==================== AI / AGENT ====================
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-5",
+      "enable_thinking": true,
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "eager",
+  },
+  // ==================== TELEMETRY ====================
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  // ==================== MODES ====================
+  "vim_mode": true,
 }
