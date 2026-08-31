@@ -1,5 +1,13 @@
 [
   {
+    "context": "Pane",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-1": "pane::ActivatePreviousItem",
+      "cmd-2": "pane::ActivateNextItem",
+    },
+  },
+  {
     "context": "Editor && vim_mode == insert",
     "bindings": { "j j": "vim::NormalBefore" },
   },
@@ -44,7 +52,18 @@
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "space \\": "project_panel::CollapseAllEntries",
-      "space r": "tab_switcher::Toggle",
+      // "space r": "tab_switcher::Toggle",
+      "space d f": "git::Diff",
+    },
+  },
+  {
+    "context": "GitPanel && ChangesList && !GitBranchSelector",
+    "use_key_equivalents": true,
+    "bindings": {
+      "ctrl+y": "git::ToggleStaged",
+      "D": ["git::RestoreFile", { "skip_prompt": true }],
+      "d": ["git::RestoreFile", { "skip_prompt": false }],
+      "s": "git::StageFile",
     },
   },
   // MENU NAVIGATION USING CTRL+J/K
@@ -87,31 +106,47 @@
   {
     "context": "Editor && vim_mode == visual",
     "bindings": {
-      "ctrl-j": "editor::MoveLineDown"
-    }
+      "ctrl-j": "editor::MoveLineDown",
+    },
   },
   {
     "context": "Editor",
     "unbind": {
-      "alt-down": "editor::MoveLineDown"
-    }
+      "alt-down": "editor::MoveLineDown",
+    },
   },
   {
     "context": "Editor && vim_mode == visual",
     "bindings": {
-      "ctrl-k": "editor::MoveLineUp"
-    }
+      "ctrl-k": "editor::MoveLineUp",
+    },
   },
   {
     "context": "Editor",
     "unbind": {
-      "alt-up": "editor::MoveLineUp"
-    }
+      "alt-up": "editor::MoveLineUp",
+    },
   },
   {
     "context": "vim_mode == normal && Editor",
     "bindings": {
-      "space g o": "git_graph::Open"
-    }
-  }
+      "space g o": "git_graph::Open",
+    },
+  },
+
+  // ==================
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual)",
+    "bindings": {
+      "space space": "file_finder::Toggle",
+      "space f f": "file_finder::Toggle", // should be git files
+      "space /": "pane::DeploySearch",
+      "space o": "outline::Toggle",
+      // "space :": "", // vim command history
+      // "space ,": "pane::ActivateNextItem",
+      "space f b": "buffer_search::Deploy",
+      "space f g": "pane::DeploySearch",
+      // "space s w": "search::SelectAllMatches",
+    },
+  },
 ]
