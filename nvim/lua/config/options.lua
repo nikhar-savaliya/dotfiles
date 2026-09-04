@@ -10,17 +10,26 @@ vim.g.snacks_animate = false
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#262628" })
-    vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#313134" })
+    local light = vim.o.background == "light"
+    -- mellow (dark) values, and their maxx-mellow-dawn (light) counterparts
+    local indent = light and "#e2ded9" or "#262628"
+    local scope = light and "#cec9c1" or "#313134"
+    local line_nr = light and "#a8a3b0" or "#6c6874"
+    local diff_text = light and "#48454f" or "#c9c7cd"
+    local add_bg = light and "#d7e8dc" or "#1a2e22"
+    local del_bg = light and "#f0d9e0" or "#2e1a22"
+
+    vim.api.nvim_set_hl(0, "SnacksIndent", { fg = indent })
+    vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = scope })
     vim.api.nvim_set_hl(0, "SnacksDiffContext", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "SnacksDiffContextLineNr", { fg = "#6c6874" })
-    -- Readable git diff: dark tint + main text fg (syntax colors were unreadable on tinted bg)
-    vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#1a2e22", fg = "#c9c7cd" })
-    vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#2e1a22", fg = "#c9c7cd" })
+    vim.api.nvim_set_hl(0, "SnacksDiffContextLineNr", { fg = line_nr })
+    -- Readable git diff: subtle tint + main text fg (syntax colors were unreadable on tinted bg)
+    vim.api.nvim_set_hl(0, "DiffAdd", { bg = add_bg, fg = diff_text })
+    vim.api.nvim_set_hl(0, "DiffDelete", { bg = del_bg, fg = diff_text })
     vim.api.nvim_set_hl(0, "DiffChange", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "SnacksDiffAdd", { bg = "#1a2e22", fg = "#c9c7cd" })
-    vim.api.nvim_set_hl(0, "SnacksDiffDelete", { bg = "#2e1a22", fg = "#c9c7cd" })
-    vim.api.nvim_set_hl(0, "SnacksDiffAddLineNr", { bg = "#1a2e22", fg = "#6c6874" })
-    vim.api.nvim_set_hl(0, "SnacksDiffDeleteLineNr", { bg = "#2e1a22", fg = "#6c6874" })
+    vim.api.nvim_set_hl(0, "SnacksDiffAdd", { bg = add_bg, fg = diff_text })
+    vim.api.nvim_set_hl(0, "SnacksDiffDelete", { bg = del_bg, fg = diff_text })
+    vim.api.nvim_set_hl(0, "SnacksDiffAddLineNr", { bg = add_bg, fg = line_nr })
+    vim.api.nvim_set_hl(0, "SnacksDiffDeleteLineNr", { bg = del_bg, fg = line_nr })
   end,
 })
