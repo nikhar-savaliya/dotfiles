@@ -118,8 +118,10 @@ link() { # link <src> <dest>
     [[ "$(readlink "$dest")" == "$src" ]] && { ok "$dest"; return; }
     rm "$dest"
   elif [[ -e "$dest" ]]; then
-    mv "$dest" "$dest.bak-$STAMP"
-    warn "backed up existing $dest -> $dest.bak-$STAMP"
+    local bak="$dest.bak"
+    [[ -e "$bak" ]] && bak="$dest.bak-$STAMP"   # keep the old .bak, don't clobber
+    mv "$dest" "$bak"
+    warn "backed up existing $dest -> $bak"
   fi
   ln -s "$src" "$dest"
   ok "$dest -> $src"
