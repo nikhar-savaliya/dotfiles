@@ -12,11 +12,11 @@ curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | 
 curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | bash -s -- omarchy
 ```
 
-Already cloned:
+Already cloned (run from anywhere — the scripts locate the repo themselves):
 
 ```sh
-cd ~/dotfiles && ./install.sh          # interactive menu
-./install.sh mac                       # or non-interactive
+~/dotfiles/install.sh          # interactive menu
+~/dotfiles/install.sh mac      # or non-interactive
 ```
 
 Re-running is safe: packages already present are skipped, and the repo is `git pull`ed first when bootstrapped remotely.
@@ -41,8 +41,8 @@ Existing files are backed up next to the original as `<name>.bak` (or `<name>.ba
 ## Cleanup & revert
 
 ```sh
-./cleanup.sh [mac|omarchy]     # delete the .bak backups (only where linking succeeded)
-./revert.sh  [mac|omarchy]     # undo: drop symlinks, restore newest .bak, remove installed fonts
+~/dotfiles/cleanup.sh [mac|omarchy]   # delete the .bak backups (only where linking succeeded)
+~/dotfiles/revert.sh  [mac|omarchy]   # undo: drop symlinks, restore newest .bak, remove installed fonts
 ```
 
 Both auto-detect the platform if omitted and take `DRY_RUN=1` to preview. `revert.sh` leaves

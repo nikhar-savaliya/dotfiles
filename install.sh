@@ -5,13 +5,13 @@
 #   curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | bash -s -- mac
 #   curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | bash -s -- omarchy
 #
-# Local:
-#   ./install.sh            # interactive menu
-#   ./install.sh mac        # non-interactive
-#   ./install.sh omarchy
+# Local (run from anywhere):
+#   ~/dotfiles/install.sh            # interactive menu
+#   ~/dotfiles/install.sh mac        # non-interactive
+#   ~/dotfiles/install.sh omarchy
 #
-# Undo:  ./revert.sh [mac|omarchy]        (restores backups)
-# Tidy:  ./cleanup.sh [mac|omarchy]       (drops backups after a good install)
+# Undo:  ~/dotfiles/revert.sh [mac|omarchy]     (restores backups)
+# Tidy:  ~/dotfiles/cleanup.sh [mac|omarchy]    (drops backups after a good install)
 
 set -euo pipefail
 

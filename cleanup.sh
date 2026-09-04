@@ -3,8 +3,8 @@
 # now proper dotfiles symlinks (i.e. that install succeeded). Fonts have no
 # backups, so they're untouched.
 #
-#   ./cleanup.sh [mac|omarchy]        # auto-detects platform if omitted
-#   DRY_RUN=1 ./cleanup.sh            # show what would be removed
+#   ~/dotfiles/cleanup.sh [mac|omarchy]     # auto-detects platform if omitted
+#   DRY_RUN=1 ~/dotfiles/cleanup.sh         # show what would be removed
 
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

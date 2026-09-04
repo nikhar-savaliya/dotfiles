@@ -5,8 +5,8 @@
 # Does NOT uninstall packages (ghostty, nvim, zed, code, tmux) or VS Code
 # extensions — remove those by hand if you want them gone.
 #
-#   ./revert.sh [mac|omarchy]         # auto-detects platform if omitted
-#   DRY_RUN=1 ./revert.sh             # show what would happen
+#   ~/dotfiles/revert.sh [mac|omarchy]      # auto-detects platform if omitted
+#   DRY_RUN=1 ~/dotfiles/revert.sh          # show what would happen
 
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
