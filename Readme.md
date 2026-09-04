@@ -57,7 +57,10 @@ revert.sh    undo install.sh
 _lib.sh      shared helpers + the symlink map (single source of truth)
 
 ghostty/     config + themes/ + custom icon      -> ~/.config/ghostty
-nvim/        LazyVim config                      -> ~/.config/nvim
+claude/      themes/, settings.json,              -> ~/.claude/
+             statusline.sh
+nvim/        LazyVim config (auto light/dark:     -> ~/.config/nvim
+             maxx-mellow / -dawn)
 zed/         settings.json, keymap.json          -> ~/.config/zed/
 vscode/      settings.json, keybinds.json,       -> Code User dir
              extensions.md
