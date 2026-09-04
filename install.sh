@@ -1,33 +1,70 @@
 #!/usr/bin/env bash
 # Dotfiles installer — macOS (MacBook) or Omarchy (Arch/Hyprland).
 #
+# Remote (nothing cloned yet):
+#   curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | bash -s -- omarchy
+#
+# Local:
 #   ./install.sh            # interactive menu
 #   ./install.sh mac        # non-interactive
 #   ./install.sh omarchy
 
 set -euo pipefail
 
-DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-STAMP="$(date +%Y%m%d-%H%M%S)"
+REPO_URL="https://github.com/maxxkph/dotfiles.git"
+DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 
 bold()  { printf '\033[1m%s\033[0m\n' "$*"; }
 info()  { printf '\033[34m::\033[0m %s\n' "$*"; }
 ok()    { printf '\033[32m ✓\033[0m %s\n' "$*"; }
 warn()  { printf '\033[33m !!\033[0m %s\n' "$*"; }
 
+# ------------------------------------------------------------- bootstrap ----
+# When piped from curl there is no checkout — grab git, clone/update, re-exec.
+
+SELF="${BASH_SOURCE[0]:-}"
+if [[ -z "$SELF" || ! -f "$SELF" || ! -d "$(dirname "$SELF")/ghostty" ]]; then
+  if ! command -v git >/dev/null 2>&1; then
+    info "installing git"
+    if [[ "$OSTYPE" == darwin* ]]; then
+      xcode-select --install || true
+      warn "finish the Command Line Tools install, then re-run this command"
+      exit 1
+    elif command -v omarchy-pkg-add >/dev/null 2>&1; then omarchy-pkg-add git
+    else sudo pacman -S --needed --noconfirm git; fi
+  fi
+  if [[ -d "$DOTFILES_DIR/.git" ]]; then
+    info "updating $DOTFILES_DIR"
+    git -C "$DOTFILES_DIR" pull --ff-only
+  else
+    info "cloning $REPO_URL -> $DOTFILES_DIR"
+    git clone "$REPO_URL" "$DOTFILES_DIR"
+  fi
+  exec bash "$DOTFILES_DIR/install.sh" "$@"
+fi
+
+DOTFILES="$(cd "$(dirname "$SELF")" && pwd)"
+STAMP="$(date +%Y%m%d-%H%M%S)"
+
 # ---------------------------------------------------------------- platform ----
 
 PLATFORM="${1:-}"
 if [[ -z "$PLATFORM" ]]; then
-  bold "Where are you setting up?"
-  echo "  1) MacBook (macOS)"
-  echo "  2) Omarchy (Arch / Hyprland)"
-  read -rp "> " choice
-  case "$choice" in
-    1) PLATFORM=mac ;;
-    2) PLATFORM=omarchy ;;
-    *) warn "unknown choice"; exit 1 ;;
-  esac
+  if [[ -r /dev/tty ]]; then
+    bold "Where are you setting up?"
+    echo "  1) MacBook (macOS)"
+    echo "  2) Omarchy (Arch / Hyprland)"
+    read -rp "> " choice </dev/tty
+    case "$choice" in
+      1) PLATFORM=mac ;;
+      2) PLATFORM=omarchy ;;
+      *) warn "unknown choice"; exit 1 ;;
+    esac
+  else
+    warn "no terminal for the menu — pass one explicitly:  ... | bash -s -- {mac|omarchy}"
+    exit 1
+  fi
 fi
 
 case "$PLATFORM" in

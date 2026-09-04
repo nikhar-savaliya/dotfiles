@@ -5,13 +5,21 @@ one install script for a fresh **MacBook** or an **Omarchy** (Arch / Hyprland) b
 
 ## Install
 
+One line on a fresh machine — installs git, clones to `~/dotfiles`, runs the installer:
+
 ```sh
-git clone <this-repo> ~/dotfiles && cd ~/dotfiles
-./install.sh            # interactive menu
-# or non-interactive:
-./install.sh mac
-./install.sh omarchy
+curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | bash -s -- mac
+curl -fsSL https://raw.githubusercontent.com/maxxkph/dotfiles/main/install.sh | bash -s -- omarchy
 ```
+
+Already cloned:
+
+```sh
+cd ~/dotfiles && ./install.sh          # interactive menu
+./install.sh mac                       # or non-interactive
+```
+
+Re-running is safe: packages already present are skipped, and the repo is `git pull`ed first when bootstrapped remotely.
 
 The script:
 
