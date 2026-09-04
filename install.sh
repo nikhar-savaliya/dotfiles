@@ -129,16 +129,19 @@ VSCODE_USER="$HOME/.config/Code/User"
 [[ "$PLATFORM" == mac ]] && VSCODE_USER="$HOME/Library/Application Support/Code/User"
 
 # --------------------------------------------------------------- fonts ------
-# macOS ships SF Mono; only Omarchy needs them installed.
+# SF Mono only lives inside Terminal.app's bundle — install it properly so the
+# config doesn't depend on Apple keeping it there.
 
-if [[ "$PLATFORM" == omarchy ]]; then
-  bold "Fonts"
+bold "Fonts"
+if [[ "$PLATFORM" == mac ]]; then
+  FONTDIR="$HOME/Library/Fonts"
+else
   FONTDIR="$HOME/.local/share/fonts"
-  mkdir -p "$FONTDIR"
-  cp "$DOTFILES"/fonts/*.otf "$DOTFILES"/fonts/*.ttf "$FONTDIR/"
-  fc-cache -f "$FONTDIR" >/dev/null
-  ok "SF Mono + SF Mono Terminal -> $FONTDIR"
 fi
+mkdir -p "$FONTDIR"
+cp "$DOTFILES"/fonts/*.otf "$DOTFILES"/fonts/*.ttf "$FONTDIR/"
+command -v fc-cache >/dev/null 2>&1 && fc-cache -f "$FONTDIR" >/dev/null
+ok "SF Mono + SF Mono Terminal -> $FONTDIR"
 
 # --------------------------------------------------------------- ghostty ----
 

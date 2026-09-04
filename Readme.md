@@ -25,7 +25,7 @@ The script:
 
 | Step | macOS | Omarchy |
 |---|---|---|
-| Fonts (SF Mono, SF Mono Terminal) | skipped — macOS ships them | copied to `~/.local/share/fonts` + `fc-cache` |
+| Fonts (SF Mono, SF Mono Terminal) | copied to `~/Library/Fonts` | copied to `~/.local/share/fonts` + `fc-cache` |
 | Ghostty | `brew install --cask ghostty` if missing | `pacman -S ghostty` if missing |
 | Neovim | `brew install neovim` if missing | `pacman -S neovim` if missing |
 | Zed | `brew install --cask zed` if missing | `pacman -S zed` if missing |
