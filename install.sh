@@ -125,14 +125,12 @@ fi
 # --------------------------------------------------------------- packages ----
 
 bold "Packages"
-pkg_install ghostty ghostty          ghostty                 --cask
-pkg_install nvim    neovim           neovim
-pkg_install tmux    tmux             tmux
-[[ "$PLATFORM" == mac ]] \
-  && { pkg_install zed  zed                 zed                     --cask
-       pkg_install code visual-studio-code  visual-studio-code-bin  --cask; } \
-  || { pkg_install zed  zed                 zed
-       pkg_install code visual-studio-code  visual-studio-code-bin; }
+CASK=""; [[ "$PLATFORM" == mac ]] && CASK="--cask"
+pkg_install ghostty ghostty            ghostty                 $CASK
+pkg_install nvim    neovim             neovim
+pkg_install tmux    tmux               tmux
+pkg_install zed     zed                zed                     $CASK
+pkg_install code    visual-studio-code visual-studio-code-bin  $CASK
 
 # --------------------------------------------------------------- fonts ------
 # SF Mono only lives inside Terminal.app's bundle — install it properly so the
