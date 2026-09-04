@@ -35,6 +35,9 @@ link_map() {
   local root="$1" vsc; vsc="$(vscode_user_dir "$2")"
   printf '%s\t%s\n' \
     "$root/ghostty"              "$HOME/.config/ghostty" \
+    "$root/claude/themes"        "$HOME/.claude/themes" \
+    "$root/claude/statusline.sh" "$HOME/.claude/statusline.sh" \
+    "$root/claude/settings.json" "$HOME/.claude/settings.json" \
     "$root/nvim"                 "$HOME/.config/nvim" \
     "$root/zed/settings.json"    "$HOME/.config/zed/settings.json" \
     "$root/zed/keymap.json"      "$HOME/.config/zed/keymap.json" \
