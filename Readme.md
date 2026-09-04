@@ -36,16 +36,31 @@ The script:
 
 On Omarchy, package installs go through `omarchy-pkg-add` when present (repos + AUR + OPR), falling back to `pacman`/`yay`.
 
-Existing files are backed up to `*.bak-<timestamp>` before linking.
+Existing files are backed up next to the original as `<name>.bak` (or `<name>.bak-<timestamp>` if a `.bak` is already there) before linking.
+
+## Cleanup & revert
+
+```sh
+./cleanup.sh [mac|omarchy]     # delete the .bak backups (only where linking succeeded)
+./revert.sh  [mac|omarchy]     # undo: drop symlinks, restore newest .bak, remove installed fonts
+```
+
+Both auto-detect the platform if omitted and take `DRY_RUN=1` to preview. `revert.sh` leaves
+installed packages and VS Code extensions in place — remove those by hand.
 
 ## Layout
 
 ```
-ghostty/   config + themes/ + custom icon      -> ~/.config/ghostty
-nvim/      LazyVim config                      -> ~/.config/nvim
-zed/       settings.json, keymap.json          -> ~/.config/zed/
-vscode/    settings.json, keybinds.json,       -> User dir
-           extensions.md
-fonts/     SF Mono / SF Mono Terminal (.otf/.ttf)
-tmux/      .tmux.conf
+install.sh   set up a machine
+cleanup.sh   remove backups after a good install
+revert.sh    undo install.sh
+_lib.sh      shared helpers + the symlink map (single source of truth)
+
+ghostty/     config + themes/ + custom icon      -> ~/.config/ghostty
+nvim/        LazyVim config                      -> ~/.config/nvim
+zed/         settings.json, keymap.json          -> ~/.config/zed/
+vscode/      settings.json, keybinds.json,       -> Code User dir
+             extensions.md
+fonts/       SF Mono / SF Mono Terminal (.otf/.ttf)
+tmux/        .tmux.conf                          -> ~/.tmux.conf
 ```
