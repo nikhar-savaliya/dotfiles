@@ -21,9 +21,12 @@ The script:
 | Ghostty | `brew install --cask ghostty` if missing | `pacman -S ghostty` if missing |
 | Neovim | `brew install neovim` if missing | `pacman -S neovim` if missing |
 | Zed | `brew install --cask zed` if missing | `pacman -S zed` if missing |
-| VS Code | `brew install --cask visual-studio-code` if missing | `visual-studio-code-bin` (AUR) if missing |
-| Configs | symlinked into `~/.config` (VS Code → `~/Library/Application Support/Code/User`) | symlinked into `~/.config` |
+| VS Code | `brew install --cask visual-studio-code` if missing | `visual-studio-code-bin` if missing |
+| tmux | `brew install tmux` if missing | `tmux` if missing |
+| Configs | symlinked into `~/.config` (VS Code → `~/Library/Application Support/Code/User`, tmux → `~/.tmux.conf`) | symlinked into `~/.config` (tmux → `~/.tmux.conf`) |
 | VS Code extensions | installed from `vscode/extensions.md` | same |
+
+On Omarchy, package installs go through `omarchy-pkg-add` when present (repos + AUR + OPR), falling back to `pacman`/`yay`.
 
 Existing files are backed up to `*.bak-<timestamp>` before linking.
 

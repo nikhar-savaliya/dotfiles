@@ -57,7 +57,9 @@ pkg_install() { # pkg_install <cli-to-check> <mac-cask-or-formula> <arch-pkg> [-
     fi
   else
     info "installing $check"
-    if pacman -Si "$arch_pkg" >/dev/null 2>&1; then
+    if command -v omarchy-pkg-add >/dev/null 2>&1; then
+      omarchy-pkg-add "$arch_pkg"                       # Omarchy wrapper (repos + AUR + OPR)
+    elif pacman -Si "$arch_pkg" >/dev/null 2>&1; then
       sudo pacman -S --needed --noconfirm "$arch_pkg"
     else
       yay -S --needed --noconfirm "$arch_pkg"
@@ -141,5 +143,11 @@ if command -v code >/dev/null 2>&1; then
     | tr -d '`' | sort -u \
     | while read -r ext; do code --install-extension "$ext" --force >/dev/null && ok "$ext"; done
 fi
+
+# --------------------------------------------------------------- tmux ------
+
+bold "tmux"
+pkg_install tmux tmux tmux
+link "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
 bold "Done."
