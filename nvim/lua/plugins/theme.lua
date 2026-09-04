@@ -1,14 +1,19 @@
 return {
-  "rose-pine/neovim",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("rose-pine").setup({
-      styles = {
-        italic = false,
-      },
-    })
-
-    vim.cmd("colorscheme rose-pine")
-  end,
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+  },
+  {
+    "dgox16/oldworld.nvim",
+    name = "oldworld",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("oldworld")
+    end,
+  },
+  {
+    "mellow-theme/mellow.nvim",
+    name = "mellow",
+  },
 }

@@ -1,7 +1,7 @@
 {
   // "ui_font_size": 14.0,
   // "buffer_font_family": "JetBrains Mono NL",
-  "buffer_font_family": "GeistMono Nerd Font Mono",
+  "buffer_font_family": "JetBrains Mono NL",
   "ui_font_size": 15.0,
   "buffer_font_size": 14.0,
   "agent_buffer_font_family": ".ZedMono",
@@ -85,7 +85,7 @@
   "theme": {
     "mode": "system",
     "light": "Flexoki Light",
-    "dark": "One Dark",
+    "dark": "Tomorrow Night",
   },
   // ==================== THEME ====================
   "icon_theme": {
