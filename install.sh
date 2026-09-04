@@ -183,7 +183,10 @@ if command -v code >/dev/null 2>&1; then
   info "installing VS Code extensions"
   grep -oE '`[a-z0-9-]+\.[a-z0-9.-]+`' "$DOTFILES/vscode/extensions.md" \
     | tr -d '`' | sort -u \
-    | while read -r ext; do code --install-extension "$ext" --force >/dev/null && ok "$ext"; done
+    | while read -r ext; do
+        if code --install-extension "$ext" --force >/dev/null 2>&1; then ok "$ext"
+        else warn "could not install $ext"; fi
+      done
 fi
 
 # --------------------------------------------------------------- tmux ------
